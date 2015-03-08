@@ -82,10 +82,10 @@ Template.postItem.helpers({
         return this.userId == Meteor.userId();
     },
     upvotedClass: function() {
-        //if (Meteor.userId() && !_.contains(this.upvoters, Meteor.userId()))
+        if (Meteor.userId() && !_.contains(this.upvoters, Meteor.userId()))
             return "btn-primary upvotable";
-        //else
-        //    return "disabled"; // thu shall not vote
+        else
+            return "disabled"; // thu shall not vote
     }
 });
 

@@ -74,7 +74,7 @@ Meteor.methods({
         //    throw new Meteor.Error(422, "Already upvoted, cheater!");
 
         // only update when not voted yet
-        Posts.update({_id: id},{ //, upvoters: {$ne: Meteor.userId()}},{
+        Posts.update({_id: id, upvoters: {$ne: Meteor.userId()}},{
             $addToSet: {upvoters: Meteor.userId()},
             $inc: {votes: 1}
         });
