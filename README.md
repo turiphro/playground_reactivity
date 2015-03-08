@@ -58,7 +58,7 @@ multiply:iron-router-progress
 accounts-{password,google,facebook,twitter} and
 twbs:bootstrap
               no        bootstrap
-mrt:accounts-ui-bootstrap-dropdown
+ian:accounts-ui-bootstrap-3
               no        accounts dropdown {{loginButtons}}
 mrt:publish-with-relations
               no        publish linked collections together
