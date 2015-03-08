@@ -1,0 +1,48 @@
+iframe {
+    border:1px lightblue solid;
+    width:100%;
+    height:500px;
+    background-image: url("img/spinner.gif");   
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-color: white;
+}
+
+.shout {
+    width:100%;
+    float:left;
+    margin:3px 0px;
+    border-bottom:1px #eee solid;
+}
+
+.shout_name {
+    float:left;
+    text-align:right;
+    margin-right:5px;
+    width:100px;
+    color:#888;
+}
+
+.shout_content {
+    color:#C38;
+}
+.shout_inactive {
+    color:#338;
+}
+
+#wave_text {
+    border:none;
+}
+
+.significant {
+    font-weight:bold;
+    color:#d22;
+}
+
+.left {
+    float: left;
+}
+
+.active {
+    border-bottom: 1px dotted darkblue;
+}

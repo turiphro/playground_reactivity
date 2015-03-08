@@ -1,0 +1,96 @@
+<template name="postsList">
+    <div class="post">
+        This Reddit-like link dump is based on the
+        <a href="http://www.discovermeteor.com" target="_blank">Discover Meteor</a>
+        book.<br><br>
+
+        <ul class="nav">
+            <li class="left {{activeRouteClass 'postsList'}}">
+                <a href="{{pathFor 'postsList'}}">Newest</a>
+            </li>
+            <li class="left {{activeRouteClass 'postsListBest'}}">
+                <a href="{{pathFor 'postsListBest'}}">Best</a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="posts">
+        <div class="wrapper">
+            {{#each posts}}
+                {{>postItem}}
+            {{/each}}
+        </div>
+    </div>
+
+    {{#if hasMorePosts}}
+    <a class="load-more" href="{{nextPath}}">Load more</a>
+    {{else}}
+      {{#unless ready}}
+        {{> spinner}}
+      {{/unless}}
+    {{/if}}
+
+    {{>postForm}}
+</template>
+
+<template name="postForm">
+    {{#if currentUser}}
+    <form class="main" id="post_form">
+        <input type="text" name="title" value="{{title}}" placeholder="Title" /><br>
+        <input type="text" name="url" value="{{url}}" placeholder="URL" /><br>
+        <input type="hidden" name="_id" value="{{_id}}" placeholder="Message" /><br>
+        <input type="submit" value="Submit" class="btn btn-primry" />
+    </form>
+    {{else}}
+    <div class="post">
+        Login to be able to post.
+    </div>
+    {{/if}}
+</template>
+
+<template name="postPage">
+    {{>postItem}}
+
+    {{#if comments.count != 0 }}
+    <h4>{{comments.count}} comment(s)</h4>
+    <ul class="comments">
+    {{#each comments}}
+        {{>comment}}
+    {{/each}}
+    </ul>
+    {{/if}}
+    {{>commentForm}}
+
+    {{#if url}}
+    <iframe src="{{url}}"></iframe>
+    {{else}}
+    No preview available.
+    {{/if}}
+</template>
+
+<template name="postItem">
+    <div class="post">
+        <div class="left">
+            <a href="#" class="upvote btn {{upvotedClass}}">⬆</a><br><br>
+            <span style="font-size:80%;">{{pluralize votes 'vote'}}</span>
+        </div>
+        <div class="post-content left">
+            <h3><a href="{{url}}">{{title}}</a><span>{{domain}}</span></h3>
+            <p>
+                Submitted by {{author}}.
+                rank: {{_rank}}
+            </p>
+        </div>
+        {{#if ownPost}}
+        <a href="#" class="btn btn-danger delete" style="float:right; margin-top: 7px;" id="{{_id}}">x</a>
+        <a href="{{pathFor 'postEdit'}}" class="btn btn-warning discuss">Edit</a>
+        {{/if}}
+        <a href="{{pathFor 'postPage'}}" class="btn btn-success discuss">Discuss ({{commentsCount}})</a>
+    </div>
+</template>
+
+<template name="postEdit">
+    <div class="main">
+        {{>postForm}}
+    </div>
+</template>

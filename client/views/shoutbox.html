@@ -1,0 +1,25 @@
+<template name="shoutbox">
+    <div class="post">
+        {{#each shouts}}
+            {{>shout}}
+        {{/each}}
+
+        <div class="shout">
+            <div class="shout_name">
+                {{#if currentUser}} {{currentUser.username}} {{else}} you {{/if}}
+            </div>
+            <div class="shout_content">
+                <form id="new_shout">
+                    <input type="text" name="content" placeholder="shout.." />
+                </form>
+            </div>
+        </div>
+    </div>
+</template>
+
+<template name="shout">
+    <div class="shout">
+        <span class="shout_name">{{name}}</span>
+        <span class="shout_content">{{content}}</span>
+    </div>
+</template>

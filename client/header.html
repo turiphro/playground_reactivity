@@ -1,0 +1,25 @@
+<template name="header">
+    <header class="navbar">
+        <div class="navbar-inner">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-ban"></span>
+                <span class="icon-ban"></span>
+                <span class="icon-ban"></span>
+            </a>
+            <a class="brand" href="{{pathFor 'index'}}">{{pageTitle}}</a>
+            <ul class="nav">
+                <li><a href="{{pathFor 'waves'}}">Waves</a></li>
+                <li><a href="{{pathFor 'shoutbox'}}">Shoutbox</a></li>
+                <li><a href="{{pathFor 'postsList'}}">Links</a></li>
+            </ul>
+            <div class="nav-collapse collapse">
+                <ul class="nav pull-right">
+                    {{#if currentUser}}
+                    <li class="dropdown">{{>notifications}}</li>
+                    {{/if}}
+                    <li>{{>loginButtons}}</li>
+                </ul>
+            </div>
+        </div>
+    </header>
+</template>

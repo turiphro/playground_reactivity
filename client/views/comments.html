@@ -1,0 +1,22 @@
+<template name="comment">
+    <li>
+        <h4>
+            <span class="author">{{author}}</span>
+            <span class="date">{{createdText}}</span>
+        </h4>
+        <p>{{body}}</p>
+    </li>
+</template>
+
+<template name="commentForm">
+    <div class="post">
+        {{#if currentUser}}
+        <form id="comment_form">
+            <input type="text" name="body" placeholder="Add a comment.." style="width:90%;margin-bottom:0px;">
+            <input type="hidden" name="postId" value="{{_id}}">
+        </form>
+        {{else}}
+        Login to place a comment.
+        {{/if}}
+    </div>
+</template>

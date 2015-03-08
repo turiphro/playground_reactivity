@@ -1,0 +1,32 @@
+<template name="layout">
+    <div class="container">
+        {{>header}}
+        {{>errors}}
+        <div id="main" class="row-fluid">
+            {{>yield}}
+        </div>
+    </div>
+</template>
+
+<template name="loading">
+    {{>spinner}} <!-- needs sacha:spin -->
+</template>
+
+<template name="accessDenied">
+    <div class="alert alert-error">
+        Access denied!
+    </div>
+</template>
+
+<template name="errors">
+    {{#each errors}}
+        {{>error}}
+    {{/each}}
+</template>
+
+<template name="error">
+    <div class="alert alert-error">
+        <button type="button" class="close" id={{_id}} data-dismiss="alert">&times;</button>
+        {{message}}
+    </div>
+</template>

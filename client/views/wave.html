@@ -1,0 +1,38 @@
+<template name="waves">
+    <div class="post">
+        {{#each waves_before_me}}
+            {{>wave}}
+        {{/each}}
+
+        <div class="shout">
+            <div class="shout_name">
+                {{#if currentUser}} {{currentUser.username}} {{else}} you {{/if}}
+            </div>
+            <div class="shout_content">
+                {{>currentWave}}
+            </div>
+            <div style="clear:both;"></div>
+        </div>
+
+        {{#each waves_after_me}}
+            {{>wave}}
+        {{/each}}
+
+    </div>
+</template>
+
+<template name="wave">
+    <div class="shout">
+        <div class="shout_name">{{name}}</div>
+        <div class="shout_content {{#if finished}}shout_inactive{{/if}}">
+            {{content}}
+        </div>
+        <div style="clear:both;"></div>
+    </div>
+</template>
+
+<template name="currentWave">
+    <form id="current_wave" style="margin-bottom:0px; padding:0px;">
+        <input type="text" name="content" id="wave_text" placeholder=".." value="{{content}}" autofocus="autofocus" />
+    </form>
+</template>
