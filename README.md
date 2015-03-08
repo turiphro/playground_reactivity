@@ -30,7 +30,7 @@ meteor remove autopublish
 meteor deploy SUBDOMAIN.meteor.com
 
 # deploy to heroku
-heroku create --buildpack https://github.com/jordansissel/heroku-buildpack-meteor.git
+heroku create --buildpack https://github.com/AdmitHub/meteor-buildpack-horse.git
 heroku addons:add mongolab:sandbox
 heroku config:add MONGO_URL=<insert_value_of_MONGOLAB_URI_here>
 heroku config:add ROOT_URL=<insert_url_created_above_here>
